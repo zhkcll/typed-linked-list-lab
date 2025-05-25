@@ -9,15 +9,15 @@ class DoublyLinkedList(Generic[T]):
         self.tail: Optional[Node[T]] = None
         self.size = 0
 
-    def append(self, data: T):
-        new_node = Node(data)
-        if self.head is None:
+    def append(self, value: T):
+        # помилка: забула оновити tail
+        new_node = Node(value)
+        if not self.head:
             self.head = self.tail = new_node
         else:
-            assert self.tail is not None
             self.tail.next = new_node
             new_node.prev = self.tail
-            self.tail = new_node
+        
         self.size += 1
 
     def remove(self, data: T):
